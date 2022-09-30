@@ -1,0 +1,170 @@
+object dm: Tdm
+  OldCreateOrder = False
+  Height = 259
+  Width = 490
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      
+        'Database=D:\Users\lmsilva7.UNIVEL\Documents\Embarcadero\Studio\P' +
+        'rojects\bd\banco.db'
+      'LockingMode=Normal'
+      'DriverID=SQLite')
+    Connected = True
+    AfterConnect = FDConnection1AfterConnect
+    BeforeConnect = FDConnection1BeforeConnect
+    Left = 120
+    Top = 72
+  end
+  object FDQueryPessoa: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from pessoa'
+      'where email=:pNome'
+      '')
+    Left = 224
+    Top = 120
+    ParamData = <
+      item
+        Name = 'PNOME'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end>
+    object FDQueryPessoaid: TFDAutoIncField
+      FieldName = 'id'
+      ReadOnly = True
+    end
+    object FDQueryPessoanome: TStringField
+      FieldName = 'nome'
+      Size = 40
+    end
+    object FDQueryPessoacpf: TStringField
+      FieldName = 'cpf'
+      Size = 11
+    end
+    object FDQueryPessoacelular: TStringField
+      FieldName = 'celular'
+      Size = 13
+    end
+    object FDQueryPessoaendereco: TStringField
+      FieldName = 'endereco'
+      Size = 60
+    end
+    object FDQueryPessoacidade: TStringField
+      FieldName = 'cidade'
+      Size = 60
+    end
+    object FDQueryPessoauf: TStringField
+      FieldName = 'uf'
+      FixedChar = True
+      Size = 2
+    end
+    object FDQueryPessoabairro: TStringField
+      FieldName = 'bairro'
+      Size = 60
+    end
+    object FDQueryPessoaemail: TStringField
+      FieldName = 'email'
+      Size = 60
+    end
+    object FDQueryPessoasenha: TStringField
+      FieldName = 'senha'
+      Size = 40
+    end
+    object FDQueryPessoaimg_usuario: TBlobField
+      FieldName = 'img_usuario'
+    end
+  end
+  object FDQueryProduto: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from produto')
+    Left = 344
+    Top = 120
+    object FDQueryProdutoid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQueryProdutonome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+    end
+    object FDQueryProdutodescricao: TStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 200
+    end
+    object FDQueryProdutovalor: TBCDField
+      FieldName = 'valor'
+      Origin = 'valor'
+      Precision = 14
+      Size = 2
+    end
+    object FDQueryProdutoquantidade: TIntegerField
+      FieldName = 'quantidade'
+      Origin = 'quantidade'
+    end
+    object FDQueryProdutoimg_produto: TBlobField
+      FieldName = 'img_produto'
+      Origin = 'img_produto'
+    end
+    object FDQueryProdutofavorito: TStringField
+      FieldName = 'favorito'
+      Origin = 'favorito'
+      FixedChar = True
+      Size = 32767
+    end
+  end
+  object FDQFavoritos: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from produto where id = :pIdProduto'
+      'and favorito = '#39'S'#39)
+    Left = 304
+    Top = 32
+    ParamData = <
+      item
+        Name = 'PIDPRODUTO'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 1
+      end>
+    object FDAutoIncField1: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object StringField1: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+    end
+    object StringField2: TStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 200
+    end
+    object BCDField1: TBCDField
+      FieldName = 'valor'
+      Origin = 'valor'
+      Precision = 14
+      Size = 2
+    end
+    object IntegerField1: TIntegerField
+      FieldName = 'quantidade'
+      Origin = 'quantidade'
+    end
+    object BlobField1: TBlobField
+      FieldName = 'img_produto'
+      Origin = 'img_produto'
+    end
+    object StringField3: TStringField
+      FieldName = 'favorito'
+      Origin = 'favorito'
+      FixedChar = True
+      Size = 1
+    end
+  end
+end

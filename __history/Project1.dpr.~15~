@@ -1,0 +1,18 @@
+program Project1;
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  Cadastro in 'Cadastro.pas' {FrmCadastro},
+  Login in 'Login.pas' {FrmLogin},
+  UDM in 'UDM.pas' {dm: TDataModule},
+  Lista in 'Lista.pas' {FrmLista};
+
+{$R *.res}
+begin
+  Application.Initialize;
+  AApplication.CreateForm(Tdm, dm);
+  AApplication.CreateForm(TFrmCadastro, FrmCadastro);
+  AApplication.CreateForm(TFrmLogin, FrmLogin);
+  AApplication.CreateForm(TFrmLista, FrmLista);
+  ication.Run;
+end.
